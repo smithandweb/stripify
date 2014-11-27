@@ -1,6 +1,6 @@
 {
   "name": "detrack",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Browserify transform that strips track lines from your code",
   "main": "detrack.js",
   "bin": "bin/detrack.js",
