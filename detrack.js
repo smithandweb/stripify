@@ -23,24 +23,24 @@ module.exports = function (file) {
 
 function parse (data) {
   return falafel(data, function (node) {
-    if (node.type != "DebuggerStatement" && (node.type != "CallExpression" || !isConsoleLog(node.callee))) return;
+    if (node.type != "DebuggerStatement" && (node.type != "CallExpression" || !isTrackFunc(node.callee))) return;
     node.update("")
   })
 }
 
-function isConsoleLog (node) {
-  return isConsole(node) && isLog(node.property)
+function isTrackFunc (node) {
+  return isTrack(node) && isFunc(node.property)
 }
 
-function isConsole (node) {
+function isTrack (node) {
   if (!node) return false
   if (node.type != "MemberExpression") return false
-  return node.object.type == "Identifier" && node.object.name == "console"
+  return node.object.type == "Identifier" && node.object.name == "track"
 }
 
-var consoleApi = ["assert", "count", "debug", "dir", "error", "exception", "group", "groupCollapsed", "groupEnd", "info", "log", "profile", "profileEnd", "time", "timeEnd", "trace", "warn"]
+var trackApi = ["track","identify","person"]
 
-function isLog (node) {
+function isFunc (node) {
   return node.type == "Identifier"
-    && (consoleApi.indexOf(node.name) > -1)
+    && (trackApi.indexOf(node.name) > -1)
 }
