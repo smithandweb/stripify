@@ -1,9 +1,9 @@
 {
-  "name": "stripify",
+  "name": "detrack",
   "version": "1.2.0",
-  "description": "Browserify transform that strips console.log lines from your code",
-  "main": "stripify.js",
-  "bin": "bin/stripify.js",
+  "description": "Browserify transform that strips track lines from your code",
+  "main": "detrack.js",
+  "bin": "bin/detrack.js",
   "scripts": {
     "test": "node test/test.js"
   },
